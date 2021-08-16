@@ -1,0 +1,27 @@
+<script defer src="./js/standart.js"></script>
+
+<div id="wrapper">
+  <h2 class="header">Личный кабинет пользователя {{user.name}}</h2>
+  <nav class="menu">
+    <li><a href="/startpage/logout">Выход</a></li>
+  </nav>
+  <div class="container">
+    <div class="container-fluid">
+      <div class="">
+        <form action="/account/files" method="post" id="getFileForm" enctype="multipart/form-data">
+        <input type="file" id="getFiles" name="file">
+          <button type="submit"> Загрузить файл </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">Список файлов:</li>
+    {{#each files}}
+    <li class="list-group-item">Название файла: <a href='/filescard/{{this.id}}'>{{this.Title}}</a></li>
+    {{/each}}
+  </ul>
+
+
+
+

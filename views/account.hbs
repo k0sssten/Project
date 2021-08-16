@@ -1,0 +1,60 @@
+  <script defer src="../js/client.js"></script>
+  <div id="wrapper">
+  <h2 class="header">Личный кабинет пользователя {{user.name}}</h2>
+  <nav class="menu">
+    <li><a href="/startpage/logout">Выход</a></li>
+  </nav>
+  <div class="container">
+    <button data-createUser>Создать пользователя</button>
+    <div class="container-fluid">
+      <div class="form-div">
+        <form name="formCreateUser" action="/account" method="post">
+          <hr>
+          <input placeholder="логин" name="Login">
+          <input placeholder="пароль" name="Password">
+          <hr>
+          <input placeholder="Полное имя" name="FullName">
+          <input placeholder="номер команды" name="Team_id">
+          <hr>
+          <input placeholder="доступ" name="Role">
+          <button data-createUserInBase> Создать </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item">Список пользователей:</li>
+    {{#each users}}
+    <li class="list-group-item">Имя: <a href='/usercard/{{this.id}}'>{{this.FullName}}</a> Логин: {{this.Login}}
+      Команда:{{this.Team_id}} <a href="/edit/del/{{this.id}}">Удалить</a></li>
+    {{/each}}
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

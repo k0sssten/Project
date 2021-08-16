@@ -1,0 +1,78 @@
+  <script defer src="../js/filescard.js"></script>
+  <script defer src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.js'></script>
+
+
+<div class="container">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Информация о файле</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Название файла: {{filescard.Title}} (имя из д.б.)</h6>
+      <p class="card-text">Адрес к файлу: {{filescard.Path}}, Id пользователя, кто добавил: {{filescard.User_id}}
+      </p>
+      <p>
+        Файл создан: {{filescard.createdAt}}.
+        {{#if dateCond}}
+        Файл обновлен: {{filescard.updatedAt}}.
+        {{/if}}
+      </p>
+      {{#if user.isAdmin}}
+      <a href="/usersfiles/{{filescard.User_id}}"> Назад </a>
+      {{else}}
+      <a href="/standart"> Назад </a>
+      {{/if}}
+    </div>
+  </div>
+</div>
+</div>
+<div class="container">
+  <form data-id={{filescard.id}} method="get" action=`/filescard/{{filescard.id}}/?column=${formData.column}&view=${formData.contactBy}` id="optionsForm" name="optionsForm">
+    <fieldset>
+      <legend>
+        Выбор по колонке:
+      </legend>
+    <p>
+      <label for="column"><em>Выбор:</em></label>
+      <select name="column" id="column">
+        <option value="pre">Выберите параметр для построения графика</option>                              
+        {{#each options}}
+        <option value="{{this}}">{{this}}</option>
+        {{/each}}
+
+      </select>
+    </p>                      
+    </fieldset>
+
+    <legend>
+          Выбор вида отображения диаграммы:
+    </legend>
+      <p>      
+        <label>
+          <input type="radio" id="bar" name="contactBy" value="bar" checked>
+              Гистограмма
+        </label>
+        <label>
+          <input type="radio" id="radar" name="contactBy" value="radar">
+              Радарная диаграмма
+        </label>
+        <label>
+          <input type="radio" id="doughnut" name="contactBy" value="doughnut">
+              Круговая диаграмма
+        </label>
+        <label>
+          <input type="radio" id="polarArea" name="contactBy" value="polarArea">
+              Полярная карта
+        </label>
+        <br>                   
+      </p>            
+      <br>
+  <p>
+    <button type="submit" id="send-options"> Выбрать </button>
+  </p>
+    
+    </form>
+  </div>
+</div>
+
+<section class="Graph">
+  <canvas id="myChart"></canvas>
+</section>

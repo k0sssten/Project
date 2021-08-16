@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Информация о пользователе</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Имя пользователя: {{usercard.FullName}} (имя из д.б.)</h6>
+      <p class="card-text">Логин: {{usercard.Login}} , Номер команды: {{usercard.Team_id}}, Доступ: {{usercard.Role}}
+      </p>
+      <a href="/usersfiles/{{usercard.id}}" class="card-link">Список загруженных файлов</a>
+      <p>
+        Профиль пользователя создан: {{usercard.createdAt}}.
+        {{#if dateCond}}
+        Профиль пользователя обновлен: {{usercard.updatedAt}}.
+        {{/if}}
+      </p>
+      <a href="/account"> Назад </a>
+    </div>
+  </div>
+</div>
+</div>

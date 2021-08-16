@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <ul class="list-group">
+      <li class="list-group-item">Список файлов:</li>
+      <div data-createdusersbars></div>
+      {{#each files}}
+      <li class="list-group-item">Название файла: <a href='/filescard/{{this.id}}'>{{this.Title}}</a> Ссылка:
+        {{this.Path}}</li>
+      {{/each}}
+    </ul>
+    <a href="/usercard/{{usercard.id}}"> Назад </a>
+  </div>
+  </div>
+</div>
